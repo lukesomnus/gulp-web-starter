@@ -1,0 +1,77 @@
+{
+    "root": {
+        "src": "src",
+        "dev": "dev",
+        "dist": "dist"
+    },
+    "tasks": {
+        "browserSync": {
+            "server": {
+                "baseDir": "./dev"
+            }
+        },
+        "static": {
+            "src": "static",
+            "dest": "/static"
+        },
+
+        "css": {
+            "vendors": {
+                "src": ["src/lib/css/normalize.css"],
+                "dest": "styles"
+            },
+            "bundle": {
+                "src": "styles",
+                "dest": "styles",
+                "autoprefixer": {
+                    "browsers": ["last 3 versions"]
+                },
+                "options": {
+                    "preCompile": true,
+                    "compileType": "less"
+                },
+                "sass": {
+                    "indentedSyntax": true
+                },
+                "extensions": ["sass", "scss", "css"]
+            }
+        },
+
+        "html": {
+            "src": "html",
+            "dest": "",
+            "pug": true
+        },
+
+        "images": {
+            "src": "images",
+            "dest": "images",
+            "extensions": ["png", "jpg", "svg", "gif"]
+        },
+
+        "fonts": {
+            "src": "fonts",
+            "dest": "styles/fonts",
+            "extensions": ["woff2", "woff", "eot", "ttf", "svg"]
+        },
+
+        "js": {
+            "vendors": {
+                "src": [
+                    "src/lib/js/jquery.min.js",
+                    "src/lib/js/dropload.js"
+                ],
+                "dest": "javascript"
+            },
+            "bundle": {
+                "src": "javascript",
+                "dest": "javascript"
+            },
+            "entry": "app/app.js",
+            "babel": {
+                "presets": ["es2015", "stage-1"],
+                "plugins": ["transform-runtime"]
+            }
+        }
+    }
+}
