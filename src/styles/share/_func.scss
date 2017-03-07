@@ -1,0 +1,9 @@
+$baseFontSize:20px;
+$designSize:1080px;
+@function px2rem($px) {
+    @return $px / $baseFontSize * 1rem;
+}
+
+@function px2per($px) {
+    @return $px/1080*100+'%';
+}
