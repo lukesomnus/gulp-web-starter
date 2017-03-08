@@ -6,15 +6,16 @@
     },
     "tasks": {
         "browserSync": {
-            "server": {
-                "baseDir": "./dev"
-            }
+            "dev": {
+                "baseDir": "./dev",
+                "port": 3000
+            },
+            "dist": {
+                "baseDir": "./dist",
+                "port": 3000
+            },
+            "browser": "google chrome"
         },
-        "static": {
-            "src": "static",
-            "dest": "/static"
-        },
-
         "css": {
             "vendors": {
                 "src": ["src/lib/css/normalize.css"],

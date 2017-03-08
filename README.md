@@ -4,7 +4,7 @@
 ## Quick Start
 ```
 # clone our repo
-https://github.com/lukesomnus/gulp-web-starter.git
+git clone https://github.com/lukesomnus/gulp-web-starter.git
 
 # change directory to our repo
 cd gulp-web-starter
@@ -14,58 +14,47 @@ npm install
 
 # start the server
 npm start
-// or npm run server:dev
-
+# or npm run server:dev
 ```
-运行 **npm start**后会生成一个dev文件夹，保存gulp处理后的临时代码。
+运行 **npm start**后会生成一个dev文件夹，保存gulp处理后的临时文件。
 
+在浏览器输入localhost:3000即可访问到页面。
 ## 项目结构
  >           
-            ├── dev  //开发临时文件
-            │   ├── images
-            │   │   └── gulp.png
-            │   ├── index.html
-            │   ├── javascript
-            │   │   ├── bundle.js
-            │   │   ├── bundle.js.map
-            │   │   └── vendors.js
-            │   └── styles
-            │       ├── bundle.css
-            │       ├── fonts
-            │       └── vendors.css
-            ├── dist  //发布文件
-            │   ├── images
-            │   │   └── gulp.png
-            │   ├── index.html
-            │   ├── javascript
-            │   │   ├── bundle.min.js
-            │   │   └── vendors.min.js
-            │   └── styles
-            │       ├── bundle.min.css
-            │       ├── fonts
-            │       └── vendors.min.css
-            ├── gulpfile.js
-            │   ├── config.json
-            │   └── index.js
-            ├── src   //项目源文件
-            │   ├── fonts
-            │   │   └── OpenSans-Bold-webfont.ttf
-            │   ├── html
-            │   │   ├── index.pug
-            │   │   └── share
-            │   ├── images
-            │   │   └── gulp.png
-            │   ├── javascript
-            │   │   └── main.js
-            │   ├── lib
-            │   │   ├── css
-            │   │   └── js
-            │   └── styles
-            │       ├── main.sass
-            │       └── share
-            └── test
-                └── index.test.js
+    ├── dev  //开发临时文件
+    │   ├── images
+    │   ├── index.html
+    │   ├── javascript
+    │   └── styles
+    ├── dist  //发布文件
+    │   ├── images
+    │   ├── index.html
+    │   ├── javascript
+    │   └── styles
+    ├── gulpfile.js   //gulp配置文件
+    │   ├── config.json
+    │   └── index.js
+    ├── karma.conf.js  //karma测试配置文件
+    ├── package.json
+    ├── src   //项目源文件
+    │   ├── fonts  //字体
+    │   ├── html  //html(pug)文件
+    │   ├── images  //图片
+    │   ├── javascript  //自定义js文件
+    │   ├── lib  //js、css库文件
+    │   └── styles   //自定义css文件
+    └── test   //测试文件
                 
+## Test 测试 
+```
+npm run test
+```
+该命令通过运行test文件下的测试代码来测试dev代码。
+
+如果你想实时监听测试代码进行测试，运行如下命令：
+```
+npm run test:watch
+```
 ## Production
 ```
 npm run prodcution
@@ -75,88 +64,7 @@ gulp处理后的文件保存在dist目录下，production包括css,html,js代码
 ```
 npm run server:dist
 ```
-## Test 测试
-
+在浏览器输入localhost:3000可查看处理后项目的运行结果。
 ## config.json 配置文件
-```
-{
-    "root": {
-        "src": "src",
-        "dev": "dev",
-        "dist": "dist"
-    },
-    "tasks": {
-        "browserSync": {
-            "server": {
-                "baseDir": "./dev"
-            }
-        },
-        "static": {
-            "src": "static",
-            "dest": "/static"
-        },
-
-        "css": {
-            "vendors": {
-                "src": ["src/lib/css/normalize.css"],
-                "dest": "styles"
-            },
-            "bundle": {
-                "src": "styles",
-                "dest": "styles",
-                "autoprefixer": {
-                    "browsers": ["last 3 versions"]
-                },
-                "options": {
-                    "preCompile": true,
-                    "compileType": "less"
-                },
-                "sass": {
-                    "indentedSyntax": true
-                },
-                "extensions": ["sass", "scss", "css"]
-            }
-        },
-
-        "html": {
-            "src": "html",
-            "dest": "",
-            "pug": true
-        },
-
-        "images": {
-            "src": "images",
-            "dest": "images",
-            "extensions": ["png", "jpg", "svg", "gif"]
-        },
-
-        "fonts": {
-            "src": "fonts",
-            "dest": "styles/fonts",
-            "extensions": ["woff2", "woff", "eot", "ttf", "svg"]
-        },
-
-        "js": {
-            "vendors": {
-                "src": [
-                    "src/lib/js/jquery.min.js",
-                    "src/lib/js/dropload.js"
-                ],
-                "dest": "javascript"
-            },
-            "bundle": {
-                "src": "javascript",
-                "dest": "javascript"
-            },
-            "entry": "app/app.js",
-            "babel": {
-                "presets": ["es2015", "stage-1"],
-                "plugins": ["transform-runtime"]
-            }
-        }
-    }
-}
-
-```
-
+可通过修改gulp.js目录下的config.json文件来修改gulp运行配置。如服务器运行端口，项目生成地址等。
 

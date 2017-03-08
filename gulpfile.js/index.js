@@ -299,10 +299,8 @@ gulp.task('clean:dist', cleanTaskDist);
 // 静态服务器
 gulp.task('server:dev', ['dev'], function () {
     browserSync.init({
-        server: {
-            baseDir: "./dev"
-        },
-        browser: "google chrome"
+        server: config.tasks.browserSync.dev.baseDir,
+        browser: config.tasks.browserSync.browser
     });
     gulp.watch(['src/styles/**/*'], ['cssBundle:dev']);
     gulp.watch('src/javascript/*.js', ['jsBundle:dev']);
@@ -313,10 +311,8 @@ gulp.task('server:dev', ['dev'], function () {
 
 gulp.task('server:dist', ['dist'], function () {
     browserSync.init({
-        server: {
-            baseDir: "./dist"
-        },
-        browser: "google chrome"
+        server: config.tasks.browserSync.dev,
+        browser: config.tasks.browserSync.browser
     });
 });
 
